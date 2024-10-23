@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 const mongoURI: string =
-  "mongodb+srv://eric-mxrtin:10s&Running!@ericfinancetracker.60euwxa.mongodb.net/";
+  "mongodb+srv://eric-mxrtin:10s&Running!@ericfinancetracker.60euwxa.mongodb.net/?retryWrites=true&w=majority&appName=EricFinanceTracker"
 
 mongoose
   .connect(mongoURI)

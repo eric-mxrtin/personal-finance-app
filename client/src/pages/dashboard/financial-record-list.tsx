@@ -4,6 +4,7 @@ import {
   useFinancialRecords,
 } from "../../contexts/financial-record-context";
 import { useTable, Column, CellProps, Row } from "react-table";
+// import "../../App.css";
 
 interface EditableCellProps extends CellProps<FinancialRecord> {
   updateRecord: (rowIndex: number, columnId: string, value: any) => void;
@@ -25,8 +26,10 @@ const EditableCell: React.FC<EditableCellProps> = ({
     updateRecord(row.index, column.id, value);
   };
 
+    // In the EditableCell component
   return (
     <div
+      className={isEditing ? "editing-cell" : ""} // Apply class if editing
       onClick={() => editable && setIsEditing(true)}
       style={{ cursor: editable ? "pointer" : "default" }}
     >
@@ -38,6 +41,15 @@ const EditableCell: React.FC<EditableCellProps> = ({
           onBlur={onBlur}
           style={{ width: "100%" }}
         />
+      ) : column.id === "date" ? (
+        new Date(value).toLocaleString('en-US', { 
+          year: 'numeric', 
+          month: 'numeric', 
+          day: 'numeric', 
+          hour: 'numeric', 
+          minute: 'numeric', 
+          hour12: true 
+        }) // Format date with time and AM/PM
       ) : typeof value === "string" ? (
         value
       ) : (
@@ -45,6 +57,7 @@ const EditableCell: React.FC<EditableCellProps> = ({
       )}
     </div>
   );
+
 };
 
 export const FinancialRecordList = () => {
