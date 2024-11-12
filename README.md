@@ -1,11 +1,5 @@
 <br />
-<div align="center">
-  <h3 align="center">Personal Finance Tracker</h3>
-
-  <p align="center">
-    A sleek and minimalist monthly finance tracker.
-  </p>
-  
+<div align="center">  
   <img src="/readme-images/auth.png" alt="auth"/>
 
 </div>
